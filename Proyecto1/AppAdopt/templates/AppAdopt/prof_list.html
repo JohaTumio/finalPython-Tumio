@@ -1,0 +1,54 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Profesionales {% endblock title %}
+{% block titulo %} Profesionales {% endblock titulo %}
+
+{% block main %}
+
+<section id="Profesionales">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'AppAdopt/assets/img/veterinarios.jpg' %}" alt="veterinario" /></div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <h2 class="display-4">Profesionales</h2>
+                    <p>¡¡¡Contamos con los mejores veterinarios para asegurarnos de la salud de nuestros amigos de 4 patas!!!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h2 class="text-center m-5">Estos son los profesionales con los que contamos!</h2>
+
+    <div class="row justify-content-around m-0">
+        {% for profesional in object_list %}
+        <div class="col-md-3">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Profesional: {{profesional.nombre}}</h5>
+                    <p class="card-text">Apellido: {{profesional.apellido}}</p>
+                    <p class="card-text">Especialidad: {{profesional.especialidad}}</p>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'ProfEdit' profesional.id %}" class="btn btn-secondary">Editar</a>
+                        <a href="{% url 'ProfDetalle' profesional.id %}" class="btn btn-secondary">Ver</a>
+                        <a href="{% url 'ProfEliminar' profesional.id %}" class="btn btn-secondary">Borrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-8">
+            <h3 class="text-center">No hay profesionales disponibles.</h3>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <h4 class="mt-5 mx-3">Agregar Profesional</h4>
+    <button class="btn btn-primary mx-3 mb-5">
+        <a class="text-white text-decoration-none" href="{% url 'ProfNuevo' %}">Agregar profesional</a>
+    </button>    
+
+{% endblock main %}

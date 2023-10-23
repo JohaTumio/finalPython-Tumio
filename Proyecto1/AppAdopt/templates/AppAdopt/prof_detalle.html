@@ -1,0 +1,27 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Profesionales {% endblock title %}
+{% block titulo %} Profesionales  {% endblock titulo %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-3 d-flex justify-content-center">
+        <div class="card m-2" style="width: 15rem;">
+            <h4 class="card-header text-center">{{ profesional.nombre }}</h4>
+            <div class="card-body">
+                <p class="card-text text-center">Apellido: {{ profesional.apellido }}</p>
+                <p class="card-text text-center">Edad: {{ profesional.edad }}</p>
+                <p class="card-text text-center">Email: {{ profesional.email }}</p>
+                {% if profesional.especialidad %}
+                    <p class="card-text text-center">Especialidad: {{ profesional.especialidad }}</p>
+                {% endif %}
+                <div class="card-footer text-center">
+                    <p>Datos del profesional</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary m-3" type="button"><a class="text-white text-decoration-none" href="{% url 'ProfList' %}">Regresar</a></button>
+
+{% endblock main %}

@@ -1,0 +1,22 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Adopta {% endblock title %}
+{% block titulo %} Adopta {% endblock titulo %}
+
+{% block main %}
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'AppAdopt/assets/img/adopta.jpg' %}" alt="..." /></div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <h2 class="display-4">Adopta</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock main %}

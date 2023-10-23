@@ -1,0 +1,55 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Animales {% endblock title %}
+{% block titulo %} Animales {% endblock titulo %}
+
+{% block main %}
+<section id="Animales">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle"
+                        src="{% static 'AppAdopt/assets/img/animales3.jpg' %}" alt="perro y gato" /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Animales</h2>
+                    <p>Queremos que integres a tu familia a alguno de nuestros animales! te están esperando!!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h2 class="text-center m-5">Te presentamos a los animales que tenemos disponibles esperamos que encuentres uno de tu agrado!</h2>
+
+<div class="row justify-content-around m-0">
+    {% for animal in object_list %}
+    <div class="col-md-3">
+        <div class="card" style="width: 15rem;">
+            <div class="card-body">
+                <img src="{{ animal.imagen.url }}" alt="{{ animal.nombre }}" class="card-img-top imgAnimales">
+                <h5 class="card-title">Animal: {{animal.nombre}}</h5>
+                <p class="card-text">Edad: {{animal.edad}}</p>
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'AnimalEdit' animal.id %}" class="btn btn-secondary">Editar</a>
+                    <a href="{% url 'AnimalDetalle' animal.id %}" class="btn btn-secondary">Ver</a>
+                    <a href="{% url 'AnimalEliminar' animal.id %}" class="btn btn-secondary">Borrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-10">
+        <h3 class="text-center">No hay animales disponibles.</h3>
+    </div>
+    {% endfor %}
+</div>
+
+<h4 class="mt-5 mx-3">Agregar Animal</h4>
+<button class="btn btn-primary mx-3 mb-5">
+    <a class="text-white text-decoration-none" href="{% url 'AnimalNuevo' %}">Agregar animal</a>
+</button>
+
+
+{% endblock main %}

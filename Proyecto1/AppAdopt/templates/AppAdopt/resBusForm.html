@@ -1,0 +1,63 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+
+{% block main %}
+
+{% if animales %}
+    <h2 class="text-center my-4">Resultados de la búsqueda de animales:</h2>
+    <div class="row">
+        {% for animal in animales %}
+        <div class="col-md-3 d-flex justify-content-center">
+            <div class="card m-2" style="width: 15rem;">
+                <h4 class="card-header text-center">{{ animal.nombre }}</h4>
+                <div class="card-body">
+                    <img src="{{ animal.imagen.url }}" alt="{{ animal.nombre }}" class="card-img-top imgAnimales">
+                    <p class="card-text text-center">Sexo: {{ animal.sexo }}</p>
+                    <p class="card-text text-center">Edad: {{ animal.edad }}</p>
+                    <p class="card-text text-center">Tamaño: {{ animal.tamaño }}</p>
+                    <p class="card-text text-center">Raza: {{ animal.raza }}</p>
+                    {% if animal.cuidados_especiales %}
+                        <p class="card-text text-center">Cuidados especiales: {{ animal.cuidados_especiales }}</p>
+                    {% endif %}
+                    {% if animal.especie %}
+                        <p class="card-text text-center">Especie: {{ animal.especie }}</p>
+                    {% endif %}
+                    {% if animal.caracteristicas %}
+                        <p class="card-text text-center">Características: {{ animal.caracteristicas }}</p>
+                    {% endif %}
+                    <div class="card-footer text-center">
+                        <p>Datos del animal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+    
+{% if profesionales %}
+    <h2 class="text-center my-4">Resultados de la búsqueda de profesionales:</h2>
+    <div class="row mb-3">
+        {% for profesional in profesionales %}
+            <div class="col-md-3 d-flex justify-content-center">
+                <div class="card m-2" style="width: 15rem;">
+                    <h4 class="card-header text-center">{{ profesional.nombre }}</h4>
+                    <div class="card-body">
+                        <p class="card-text text-center">Apellido: {{ profesional.apellido }}</p>
+                        <p class="card-text text-center">Edad: {{ profesional.edad }}</p>
+                        <p class="card-text text-center">Email: {{ profesional.email }}</p>
+                        {% if profesional.especialidad %}
+                            <p class="card-text text-center">Especialidad: {{ profesional.especialidad }}</p>
+                        {% endif %}
+                        <div class="card-footer text-center">
+                            <p>Datos del profesional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock main %}
+

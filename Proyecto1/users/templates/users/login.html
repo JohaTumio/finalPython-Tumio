@@ -1,0 +1,27 @@
+{% extends 'AppAdopt/base.html' %}
+
+{% load static %}
+
+{% block title %} Login {% endblock title %}
+{% block titulo %} Iniciar sesion  {% endblock titulo %}
+
+{% block main %}
+
+    <form action="?next={{ request.GET.next }}" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <button type="submit">Inciar sesion</button>
+    </form>
+
+
+
+{% endblock main %}

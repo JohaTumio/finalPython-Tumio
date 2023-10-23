@@ -1,0 +1,16 @@
+/* users */
+/* formulario login */
+.msj_error_form{
+    color: red;
+    font-weight: bold;
+}
+
+.img_avatar{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.imgAnimales{
+    height: 200px;
+}

@@ -1,0 +1,53 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Cuidadores {% endblock title %}
+{% block titulo %} Cuidadores {% endblock titulo %}
+
+{% block main %}
+
+<section id="Cuidadores">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'AppAdopt/assets/img/cuidadores.jpg' %}" alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Cuidadores</h2>
+                    <p>Tenemos cuidadores que nos ayudan y nos informan de cada detalle además de jugar con ellos!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h2 class="text-center m-5">Conocé a los que nos ayudan todos los días!</h2>
+
+<div class="row justify-content-around m-0">
+    {% for cuidador in object_list %}
+    <div class="col-md-3">
+        <div class="card" style="width: 15rem;">
+            <div class="card-body">
+                <h5 class="card-title">Cuidador: {{cuidador.nombre}}</h5>
+                <p class="card-text">Apellido: {{cuidador.apellido}}</p>
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'CuidadorEdit' cuidador.id %}" class="btn btn-secondary">Editar</a>
+                    <a href="{% url 'CuidadorDetalle' cuidador.id %}" class="btn btn-secondary">Ver</a>
+                    <a href="{% url 'CuidadorEliminar' cuidador.id %}" class="btn btn-secondary">Borrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-8">
+        <h3 class="text-center">No hay cuidadores disponibles.</h3>
+    </div>
+    {% endfor %}
+</div>
+
+<h4 class="mt-5 mx-3">Agregar Cuidador</h4>
+<button class="btn btn-primary mx-3 mb-5">
+    <a class="text-white text-decoration-none" href="{% url 'CuidadorNuevo' %}">Agregar cuidador</a>
+</button>    
+
+{% endblock main %}

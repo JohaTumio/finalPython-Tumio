@@ -1,0 +1,35 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Animales {% endblock title %}
+{% block titulo %} Detalles  {% endblock titulo %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-3 d-flex justify-content-center">
+        <div class="card m-2" style="width: 15rem;">
+            <h4 class="card-header text-center">{{ animal.nombre }}</h4>
+            <div class="card-body">
+                <img src="{{ animal.imagen.url }}" alt="{{ animal.nombre }}" class="card-img-top imgAnimales">
+                <p class="card-text text-center">Sexo: {{ animal.sexo }}</p>
+                <p class="card-text text-center">Edad: {{ animal.edad }}</p>
+                <p class="card-text text-center">Tamaño: {{ animal.tamaño }}</p>
+                <p class="card-text text-center">Raza: {{ animal.raza }}</p>
+                {% if animal.cuidados_especiales %}
+                    <p class="card-text text-center">Cuidados especiales: {{ animal.cuidados_especiales }}</p>
+                {% endif %}
+                {% if animal.especie %}
+                    <p class="card-text text-center">Especie: {{ animal.especie }}</p>
+                {% endif %}
+                {% if animal.caracteristicas %}
+                    <p class="card-text text-center">Características: {{ animal.caracteristicas }}</p>
+                {% endif %}
+                <div class="card-footer text-center">
+                    <p>Datos del animal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary m-3"  type="button"><a class="text-white text-decoration-none" href="{% url 'AnimalList' %}">Regresar</a></button>
+
+{% endblock main %}

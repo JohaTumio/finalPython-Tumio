@@ -1,0 +1,25 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Cuidador {% endblock title %}
+{% block titulo %} Detalles  {% endblock titulo %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-3 d-flex justify-content-center">
+        <div class="card m-2" style="width: 15rem;">
+            <h4 class="card-header text-center">{{ cuidador.nombre }}</h4>
+            <div class="card-body">
+                <p class="card-text text-center">Apellido: {{ cuidador.apellido }}</p>
+                <p class="card-text text-center">Edad: {{ cuidador.edad }}</p>
+                <p class="card-text text-center">Email: {{ cuidador.email }}</p>
+                <p class="card-text text-center">Direccion: {{ cuidador.direccion }}</p>
+                <div class="card-footer text-center">
+                    <p>Datos del cuidador</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button"><a href="{% url 'CuidadorList' %}">Regresar</a></button>
+
+{% endblock main %}

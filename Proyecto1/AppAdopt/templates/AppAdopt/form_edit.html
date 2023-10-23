@@ -1,0 +1,20 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Editar {% endblock title %}
+{% block titulo %} Editar  {% endblock titulo %}
+
+{% block main %}
+
+    <form class="m-3" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        
+        <input class="btn btn-primary mx-3 mt-5 mb-3" type="submit" value="Actualizar">
+        <button class="btn btn-secondary mx-3 mt-5 mb-3">
+            <a class="text-white text-decoration-none" href="{{ return_url }}">Cancelar</a>
+        </button>
+    </form>
+
+{% endblock main %}

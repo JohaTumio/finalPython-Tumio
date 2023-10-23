@@ -1,0 +1,16 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Eliminar {% endblock title %}
+{% block titulo %} Eliminar  {% endblock titulo %}
+
+{% block main %}
+
+    <form class="m-3" action="" method="POST">
+        {% csrf_token %}
+        <p class="fs-3">Estas seguro que deseas eliminar al cuidador: </p>
+        <p class="fw-bold fs-3">"{{ object }}"</p>
+        <input  class="btn btn-primary mx-3" type="submit" value="Borrar">
+        <a href="{% url 'CuidadorList' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+{% endblock main %}

@@ -1,0 +1,16 @@
+{% extends 'AppAdopt/base.html' %}
+{% load static %}
+{% block title %} Formulario {% endblock title %}
+{%block titulo%} Web AppAdopt {% endblock titulo %}
+
+{% block main %}
+<form class="m-5" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }} 
+    </table>
+    <input class="btn btn-primary mt-3 mx-5" type="submit" value="Enviar">
+
+</form>
+
+{% endblock main %}
